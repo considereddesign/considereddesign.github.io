@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.html -f 
+RewriteRule ^(.*)$ $1.html
+</IfModule>
+## EXPIRES CACHING ##
+<ifmodule mod_expires.c>
+<Filesmatch "\.(jpg|jpeg|png|gif|js|css|swf|ico|woff|mp3)$">
+    # enable expirations
+ExpiresActive On
+ExpiresDefault "access plus 1 week"
+ExpiresByType image/gif "access plus 1 week"
+ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/pjpeg "access plus 1 week"
+ExpiresByType text/javascript "modification plus 1 week"
+ExpiresByType application/javascript "modification plus 1 week"
+ExpiresByType text/css "modification plus 1 week"
+</Filesmatch>
+</ifmodule>
+## EXPIRES CACHING ##
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .htm .html .css .js .woff
